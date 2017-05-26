@@ -1,0 +1,30 @@
+{
+  "name": "rantit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmehul/RantIt.git"
+  },
+  "dependencies": {
+    "express":"*",
+    "mongoose":"*",
+    "bcryptjs":"*",
+    "cors":"*",
+    "jsonwebtoken":"*",
+    "body-parser":"*",
+    "passport":"*",
+    "passport-jwt":"*"
+  },
+  "author": "mehul gawde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsmehul/RantIt/issues"
+  },
+  "homepage": "https://github.com/itsmehul/RantIt#readme"
+}
