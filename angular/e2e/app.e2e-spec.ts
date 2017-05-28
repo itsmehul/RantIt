@@ -1,10 +1,10 @@
-import { AngularSrcPage } from './app.po';
+import { AngularPage } from './app.po';
 
-describe('angular-src App', () => {
-  let page: AngularSrcPage;
+describe('angular App', () => {
+  let page: AngularPage;
 
   beforeEach(() => {
-    page = new AngularSrcPage();
+    page = new AngularPage();
   });
 
   it('should display message saying app works', () => {
