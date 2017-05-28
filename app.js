@@ -1,9 +1,9 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const passport = require('passport');
-const mongoose = require('mongoose');
+const express=require('express');
+const path=require('path');
+const bodyParser=require('body-parser');
+const cors=require('cors');
+const passport=require('passport');
+const mongoose=require('mongoose');
 const config=require('./config/database')
 
 mongoose.connect(config.database);
@@ -16,34 +16,41 @@ mongoose.connection.on('error',()=>{
     console.log('db error'+err);
 });
 
-//app variable
 const app = express();
 
 //where users route cann be found(URI)
 const users = require('./routes/users');
 
 //port number
-const port = 3000;
-
-//Body parser middleware
-app.use(bodyParser.json());
+const port=3000;
 
 //CORS middleware
 app.use(cors());
 
 //Set Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'public')));
 
-// CORS allows us to request to our api from a different domain name
+//Body parser middleware
+app.use(bodyParser.json());
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
 //users route
-app.use('/users', users);
-
-//index route, or route to homepage
-app.get('/', (req, res) => {
-    res.send('Invalid Endpoint');
+app.use('/users',users);
+//index route
+app.get('/',(req,res)=>{
+res.send('Invalid Endpoint');
+});
+//any other route
+app.get('*',(req,res)=>{
+res.sendFile(path.join(__dirname,'public/index.html'));
 });
 
-//starts our server
-app.listen(port, () => {
-    console.log('Server start on port' + port);
+
+app.listen(port,()=>{
+    console.log('Server start on port'+port);
 });

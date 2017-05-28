@@ -32,7 +32,7 @@ router.post('/authenticate',(req,res,next)=>{
         if(!user){
             return res.json({success: false, msg: 'User not found'});
         }
-
+        //passing the user inputted password along with the hashed password
         User.comparePassword(password,user.password,(err,isMatch)=>{
             if(err) throw err;
             if(isMatch){

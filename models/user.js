@@ -26,6 +26,7 @@ const User = module.exports = mongoose.model('User', UserSchema);
 
 //so we can use these functions outside
 module.exports.getUserById = function (id, callback) {
+    //it accepts 2 parameters: id, callback. And calls the findById method on the scheme object reference
     User.findById(id, callback);
 }
 module.exports.getUserByUsername = function (username, callback) {
