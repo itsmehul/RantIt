@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const config=require('../config/database');
 
 //Register
+//control is sent here from the auth.service 
 router.post('/register',(req,res,next)=>{
     let newUser = new User({
         name: req.body.name,

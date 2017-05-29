@@ -11,6 +11,13 @@ export class AuthService {
   constructor(private http: Http) { }
   registerUser(user) {
     let headers = new Headers();
+    //set content type
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, { headers: headers }).map(res => res.json());
+    return this.http.post(
+      //server URL (check routes/users)
+      'http://localhost:3000/users/register', 
+      //user data
+      user, { headers: headers })
+      //convert observable data to json format
+      .map(res => res.json());
   }}
