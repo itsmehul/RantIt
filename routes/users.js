@@ -58,8 +58,8 @@ router.post('/authenticate',(req,res,next)=>{
     });
 });
 
+//requires the token in the header to access route
 router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res,next)=>{
-    
     res.json({user: req.user});
 });
 
